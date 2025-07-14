@@ -1,9 +1,15 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { fetchRecipesByIngredients } from '../utils/spoonacular';
+import Link from 'next/link'
+
+
 
 export default function Pantry() {
   const [input, setInput] = useState('');
   const [pantry, setPantry] = useState([]);
+  const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // Load pantry from localStorage on mount
   useEffect(() => {
@@ -28,6 +34,20 @@ export default function Pantry() {
     setPantry(pantry.filter(i => i !== item));
   };
 
+  const handleFetchRecipes = async () => {
+    if (pantry.length === 0) return;
+    setLoading(true);
+    try {
+      const data = await fetchRecipesByIngredients(pantry);
+      setRecipes(data);
+    } catch (err) {
+      alert("Error fetching recipes: " + err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+    
   return (
     <div className="max-w-xl mx-auto mt-6 p-4 bg-white rounded shadow">
       <h2 className="text-xl font-semibold mb-4">Your Ingredients</h2>
@@ -66,6 +86,31 @@ export default function Pantry() {
           ))}
         </ul>
       )}
+ <button
+        onClick={handleFetchRecipes}
+        disabled={loading || pantry.length === 0}
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mt-2"
+      >
+        {loading ? 'Finding Recipes...' : 'Find Recipes'}
+      </button>
+
+      {/* Recipe Results */}
+      <div className="mt-6 space-y-4">
+        {recipes.map(recipe => (
+          <div key={recipe.id} className="border rounded p-3 shadow-sm bg-gray-50">
+            <div className="flex gap-4 items-center">
+              <img src={recipe.image} alt={recipe.title} className="w-16 h-16 rounded" />
+              <div>
+                <h3 className="font-semibold">{recipe.title}</h3>
+                <p className="text-sm text-gray-600">
+                  Missing Ingredients: {recipe.missedIngredientCount}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
     </div>
   );
 }
