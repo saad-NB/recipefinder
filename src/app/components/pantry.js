@@ -47,11 +47,11 @@ export default function Pantry() {
     }
   };
 
-    
+
   return (
     <div className="max-w-xl mx-auto mt-6 p-4 bg-white rounded shadow">
       <h2 className="text-xl font-semibold mb-4">Your Ingredients</h2>
-      
+
       <div className="flex gap-2 mb-4">
         <input
           type="text"
@@ -86,7 +86,7 @@ export default function Pantry() {
           ))}
         </ul>
       )}
- <button
+      <button
         onClick={handleFetchRecipes}
         disabled={loading || pantry.length === 0}
         className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded mt-2"
@@ -94,20 +94,22 @@ export default function Pantry() {
         {loading ? 'Finding Recipes...' : 'Find Recipes'}
       </button>
 
-      {/* Recipe Results */}
+
       <div className="mt-6 space-y-4">
         {recipes.map(recipe => (
-          <div key={recipe.id} className="border rounded p-3 shadow-sm bg-gray-50">
-            <div className="flex gap-4 items-center">
-              <img src={recipe.image} alt={recipe.title} className="w-16 h-16 rounded" />
-              <div>
-                <h3 className="font-semibold">{recipe.title}</h3>
-                <p className="text-sm text-gray-600">
-                  Missing Ingredients: {recipe.missedIngredientCount}
-                </p>
+          <Link key={recipe.id} href={`/recipe/${recipe.id}`}>
+            <div className="border rounded p-3 shadow-sm bg-gray-50 cursor-pointer hover:shadow-lg transition">
+              <div className="flex gap-4 items-center">
+                <img src={recipe.image} alt={recipe.title} className="w-16 h-16 rounded" />
+                <div>
+                  <h3 className="font-semibold">{recipe.title}</h3>
+                  <p className="text-sm text-gray-600">
+                    Missing Ingredients: {recipe.missedIngredientCount}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
