@@ -1,5 +1,5 @@
 export async function GET(request, { params }) {
-  const { id } = params;
+  const { id } = await params;
   const url = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.SPOONACULAR_API_KEY}`;
   const response = await fetch(url);
 

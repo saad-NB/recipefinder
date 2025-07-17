@@ -13,9 +13,10 @@ async function getRecipeDetails(id) {
 
 // Server Component for dynamic recipe page
 export default async function RecipePage({ params }) {
+  const { id } = await params;
   let recipe;
   try {
-    recipe = await getRecipeDetails(params.id);
+    recipe = await getRecipeDetails(id);
   } catch (err) {
     return (
       <div className="p-8 text-center text-red-600">
@@ -23,6 +24,7 @@ export default async function RecipePage({ params }) {
       </div>
     );
   }
+
 
   return (
     <div className="max-w-2xl mx-auto p-8">
@@ -55,5 +57,7 @@ export default async function RecipePage({ params }) {
         </div>
       </div>
     </div>
+
+    
   );
 }
