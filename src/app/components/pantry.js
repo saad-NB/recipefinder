@@ -62,7 +62,7 @@ export default function Pantry() {
         </div>
 
         {/* Input Section */}
-        <div className="backdrop-blur-md bg-white/10 rounded-2xl p-8 border border-white/20 shadow-2xl mb-8 animate-slide-up">
+        <div className="backdrop-blur-md bg-white/10 rounded-2xl p-3 border border-white/20 shadow-2xl mb-8 animate-slide-up">
           <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
             Your ingredients
           </h2>
@@ -80,9 +80,9 @@ export default function Pantry() {
               onClick={handleAdd}
               className="group bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-400 hover:to-blue-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-green-500/25"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-1">
                 Add
-                <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-0.5 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
               </span>

@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <nav className="relative z-50 backdrop-blur-md bg-black/20 border-b border-white/10 shadow-2xl">
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-bold text-white drop-shadow-lg">
+        <h1 className="text-xl font-bold text-white drop-shadow-lg">
           <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
             Recipe Finder
           </span>

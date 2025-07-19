@@ -6,7 +6,7 @@ export async function POST(request) {
  
 
   // Build Spoonacular API URL
-  const spoonacularUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients.join(',')}&number=10&apiKey=${process.env.SPOONACULAR_API_KEY}`;
+  const spoonacularUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients.join(',')}&number=80&apiKey=${process.env.SPOONACULAR_API_KEY}`;
 
   // Make the request to Spoonacular
   const response = await fetch(spoonacularUrl);
