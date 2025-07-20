@@ -1,0 +1,8 @@
+{
+  "/api/togetrecipes/route": "app/api/togetrecipes/route.js",
+  "/api/togetrecipes/[id]/route": "app/api/togetrecipes/[id]/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/generaterecipes/page": "app/generaterecipes/page.js",
+  "/page": "app/page.js",
+  "/recipe/[id]/page": "app/recipe/[id]/page.js"
+}
